@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .popup {
+        border: 1px solid black;
+        padding: 10px;
+        margin: 5px;
+        font-family: 'Roboto', sans-serif;
+        cursor: pointer;
+        text-align: center;
+        max-width: 50%;
+      }
+      .popup:hover {
+        background: black;
+        color: white;
+      }
+
+      .close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: red;
+        color: white;
+        font-size: 0.8rem;
+      }
+
+      .output {
+        position: absolute;
+        background: #ddd;
+        top: 10%;
+        left: 25%;
+        width: 50%;
+        padding: 15px;
+        border: 1px solid black;
+        min-height: 10%;
+      }
+
+      .message {
+        text-align: center;
+        margin-top: 20px;
+      }
+
+      .hide {
+        display: none;
+      }
+    </style>
+    <title>Popup Message</title>
+  </head>
+  <body>
+    <div class="output hide">
+      <button class="close">Close</button>
+      <div class="message">No Content Yet</div>
+    </div>
+    <div class="popup" data-message="Hello Bozo">Click Me</div>
+    <div class="popup" data-message="JavaScript is Fun">What Is Fun?</div>
+    <div class="popup" data-message="Molly Moo">My favorite Doggie</div>
+    <script>
+      const popups = document.querySelectorAll('.popup');
+      const popup = document.querySelector('.output');
+      const popMessage = document.querySelector('.message');
+      const closeButton = document.querySelector('.close');
+
+      closeButton.addEventListener('click', function() {
+        popup.classList.toggle('hide');
+      });
+
+      for (let x = 0; x < popups.length; x++) {
+        popups[x].addEventListener('click', function() {
+          let outputText = this.getAttribute('data-message');
+          message(outputText);
+        });
+      }
+
+      const message = output => {
+        popup.classList.toggle('hide');
+        popMessage.innerText = output;
+      };
+    </script>
+  </body>
+</html>
