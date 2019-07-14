@@ -1,33 +1,18 @@
-.container {
+.wrapper {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  font-size: 35px;
+  grid-gap: 50px;
 }
 
-h1 {
-  text-align: center;
-}
-
-.section1 a {
+.section a {
   display: block;
-  margin-bottom: 5px;
   text-align: center;
+  margin: 10px 0;
 }
 
-.section2 a {
-  display: block;
-  margin-bottom: 5px;
-  text-align: center;
-}
-
-@media (min-width: 700px) {
-  h1 {
-    font-size: 50px;
-  }
-}
-
-@media (min-width: 700px) {
-  .section1,
-  .section2 {
-    font-size: 30px;
+@media (max-width: 500px) {
+  .section a {
+    font-size: 24px;
   }
 }
