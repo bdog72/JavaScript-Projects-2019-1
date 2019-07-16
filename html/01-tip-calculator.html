@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Tip Calculator</title>
+    <style></style>
+  </head>
+  <body>
+    <div class="output"></div>
+    <input type="number" value="100" />
+    <button type="button">Tip 1</button>
+    <script>
+      const button = document.querySelector('button');
+      const output = document.querySelector('.output');
+      const cost = document.querySelector('input');
+      console.log(button);
+      button.addEventListener('click', function() {
+        let tip = (cost.value * 0.15).toFixed(2);
+        let temp = `You Should tip $${tip} on $${cost.value}`;
+        output.innerHTML = temp;
+      });
+    </script>
+  </body>
+</html>

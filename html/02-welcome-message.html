@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Welcome Message</title>
+    <style></style>
+  </head>
+  <body>
+    <h1>Welcome Message</h1>
+    <div class="output"></div>
+    Name: <input type="text" value="Brian" />
+    <button type="button">Message</button>
+    <script>
+      const output = document.querySelector('.output');
+      const button = document.querySelector('button');
+      const myName = document.querySelector('input');
+      button.addEventListener('click', showMessage);
+      function showMessage() {
+        output.innerHTML = `<h1>Hello welcome ${myName.value}</h1>`;
+      }
+    </script>
+  </body>
+</html>
