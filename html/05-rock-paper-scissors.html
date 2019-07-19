@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Rock Paper Scissors</title>
+  </head>
+  <body>
+    <div class="score"></div>
+    <div class="message"></div>
+    <button type="button">Rock</button>
+    <button type="button">Paper</button>
+    <button type="button">Scissors</button>
+    <script>
+      const message = document.querySelector('.message');
+      const score = document.querySelector('.score');
+      const buttons = document.querySelectorAll('button');
+      let winner = [0, 0];
+      for (let i = 0; i < buttons.length; i++) {
+        buttons[i].addEventListener('click', playGame);
+      }
+
+      function playGame(e) {
+        let playerSelection = e.target.innerText;
+        let computerSelection = Math.random();
+        if (computerSelection < 0.34) {
+          computerSelection = 'Rock';
+        } else if (computerSelection <= 0.67) {
+          computerSelection = 'Paper';
+        } else {
+          computerSelection = 'Scissors';
+        }
+        // console.log(playerSelection, computerSelection);
+        let result = checkWinner(playerSelection, computerSelection);
+        // console.log(result);
+        if (result == 'Player') {
+          result += ' wins!';
+          winner[0]++;
+        } else if (result == 'Computer') {
+          result += ' wins!';
+          winner[1]++;
+        } else {
+          result += ` results in a tie match`;
+        }
+        score.innerHTML = `Player 1: -- [${winner[0]}] <br> Player 2: -- [${
+          winner[1]
+        }]`;
+        messenger(`${playerSelection} vs ${computerSelection}
+        <br> 
+        <b>${result}</b>`);
+      }
+
+      function messenger(mes) {
+        message.innerHTML = mes;
+      }
+
+      function checkWinner(player, computer) {
+        if (player === computer) {
+          return 'Draw';
+        }
+        if (player === 'Rock') {
+          if (computer === 'Paper') {
+            return 'Computer';
+          } else {
+            return 'Player';
+          }
+        }
+        if (player === 'Paper') {
+          if (computer === 'Scissors') {
+            return 'Computer';
+          } else {
+            return 'Player';
+          }
+        }
+        if (player === 'Scissors') {
+          if (computer === 'Rock') {
+            return 'Computer';
+          } else {
+            return 'Player';
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
