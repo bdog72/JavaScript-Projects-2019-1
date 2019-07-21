@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Audio Files and Sounds</title>
+    <style>
+      .animal {
+        width: 100px;
+        height: 50px;
+        color: #2b061e;
+        background: #ffeedb;
+        text-align: center;
+        border: 1px solid black;
+        position: relative;
+        display: inline-block;
+        margin: 15px;
+      }
+
+      .active {
+        border: 5px solid red;
+        color: #ffeedb;
+        background: #2b061e;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      const myArray = ['dog', 'cougar', 'lion'];
+      document.addEventListener('DOMContentLoaded', init);
+      function init() {
+        console.log('Page Ready Bozo');
+        myArray.forEach(function(item) {
+          console.log(item);
+          let div = document.createElement('div');
+          div.setAttribute('class', 'animal ' + item);
+          div.innerText = item.toUpperCase();
+          div.addEventListener('click', function() {
+            playIt(item);
+          });
+          document.body.appendChild(div);
+        });
+      }
+
+      const animals = document.querySelectorAll('.animal');
+      for (let i = 0; i < animals.length; i++) {
+        animals[i].addEventListener('click', function() {
+          let animal = this.innerHTML;
+          let lowerAnimal = animal.toLowerCase();
+          playIt(lowerAnimal);
+        });
+      }
+
+      function playIt(name) {
+        let activeEle = document.querySelector(`.${name}`);
+        let sound1 = new Audio(`../sound/${name}.mp3`);
+        sound1.play();
+        activeEle.classList.add('active');
+        setTimeout(function() {
+          activeEle.classList.remove('active');
+        }, 2000);
+      }
+    </script>
+  </body>
+</html>
