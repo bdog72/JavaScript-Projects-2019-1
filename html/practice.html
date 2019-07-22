@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Bozo</h1>
+    <button class="bozo">Click me</button>
+    <div class="bozo1"></div>
+    <script>
+      const btn = document.querySelector('.bozo');
+      const div = document.querySelector('.bozo1');
+      btn.addEventListener('click', function() {
+        div.innerHTML = 'What Up Dog';
+        let result =
+          '#' +
+          Math.random()
+            .toString(16)
+            .substr(-6);
+        btn.style.backgroundColor = result;
+      });
+    </script>
+  </body>
+</html>
