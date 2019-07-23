@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Magic Eight Ball</title>
+  </head>
+  <body>
+    <div>Ask your question</div>
+    <input type="text" placeholder="Question" />
+    <button type="button">Ask</button>
+    <div class="message"></div>
+    <script>
+      const answerArray = [
+        'It will work',
+        'Maybe not',
+        'Probably not',
+        'Highely likely',
+        'I dont know'
+      ];
+      const message = document.querySelector('.message');
+      const question = document.querySelector('input');
+      const button = document.querySelector('button');
+      button.addEventListener('click', function() {
+        console.log(question.value);
+        let res = Math.floor(Math.random() * answerArray.length);
+        console.log(answerArray[res]);
+        setTimeout(function() {
+          question.value = '';
+          message.innerHTML = '';
+        }, 5000);
+        message.innerHTML = `<h1>${answerArray[res]}</h1>`;
+        // message.innerHTML = answerArray[res];
+      });
+    </script>
+  </body>
+</html>
