@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!-- <link
+      href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap"
+      rel="stylesheet"
+    /> -->
+    <title>Combination Guesser Game</title>
+    <style>
+      .numb {
+        font-size: 2em;
+      }
+      button {
+        margin-bottom: 15px;
+        margin-top: 10px;
+      }
+      small {
+        font-size: 0.8em;
+        font-family: sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="message">Guess Combo</div>
+    <div class="game"></div>
+    <button type="button">Start</button>
+    <div>
+      <small
+        >Instructions: Guess the combo, blue means higher red means lower. Try
+        to solve it in as little guesses as possible.</small
+      >
+    </div>
+
+    <script>
+      const gameArea = document.querySelector('.game');
+      const button = document.querySelector('button');
+      const message = document.querySelector('.message');
+
+      let score = 0;
+      let gamePlay = false;
+
+      button.addEventListener('click', function() {
+        if (!gamePlay) {
+          gamePlay = true;
+          score = 0;
+          gameArea.innerHTML = '';
+          maker();
+          message.innerHTML = `Guess The Combo`;
+          button.innerHTML = 'Check Combo';
+        } else {
+          console.log('checker');
+          score++;
+          message.innerHTML = `Guesses ${score}`;
+          const numbers = document.querySelectorAll('.input-size');
+          winCondition = 0;
+          console.log(numbers);
+          for (let i = 0; i < numbers.length; i++) {
+            if (numbers[i].value == numbers[i].correct) {
+              numbers[i].style.backgroundColor = 'green';
+              numbers[i].style.color = 'white';
+              console.log('Match');
+              winCondition++;
+            } else {
+              let color =
+                numbers[i].value < numbers[i].correct ? 'blue' : 'red';
+              numbers[i].style.backgroundColor = color;
+              numbers[i].style.color = 'black';
+
+              console.log('No Match');
+            }
+            if (winCondition == numbers.length) {
+              console.log('Game Over');
+              gameEnd();
+            }
+          }
+        }
+      });
+
+      function gameEnd() {
+        message.innerHTML = `You solved the combo in ${score} guesses`;
+        let gamePlay = false;
+
+        button.innerHTML = 'Restart Game';
+      }
+
+      function maker() {
+        for (let x = 0; x < 4; x++) {
+          let el = document.createElement('input');
+          el.classList.add('input-size');
+          el.setAttribute('type', 'number');
+          el.max = 9;
+          el.min = 0;
+          el.size = 1;
+          el.order = x;
+          // el.value = 0;
+          // el.value = Math.floor(Math.random() * 10);
+          el.correct = Math.floor(Math.random() * 10);
+          el.value = el.correct;
+          console.log(el.correct);
+          gameArea.appendChild(el);
+        }
+      }
+    </script>
+    <!-- <script>
+      const gameArea = document.querySelector('.game');
+      const button = document.querySelector('button');
+      const message = document.querySelector('.message');
+
+      let score = 0;
+      let gamePlay = false;
+
+      button.addEventListener('click', function() {
+        if (!gamePlay) {
+          gamePlay = true;
+          score = 0;
+          gameArea.innerHTML = '';
+          maker();
+          message.innerHTML = `Guess The Combo`;
+          button.innerHTML = 'Check Combo';
+        } else {
+          console.log('checker');
+          score++;
+          message.innerHTML = `Guesses ${score}`;
+          const numbers = document.querySelectorAll('.input-size');
+          winCondition = 0;
+          console.log(numbers);
+          for (let i = 0; i < numbers.length; i++) {
+            if (numbers[i].value == numbers[i].correct) {
+              numbers[i].style.backgroundColor = 'green';
+              numbers[i].style.color = 'white';
+              console.log('Match');
+              winCondition++;
+            } else {
+              let color =
+                numbers[i].value < numbers[i].correct ? 'blue' : 'red';
+              numbers[i].style.backgroundColor = color;
+              numbers[i].style.color = 'black';
+
+              console.log('No Match');
+            }
+            if (winCondition == numbers.length) {
+              console.log('Game Over');
+              gameEnd();
+            }
+          }
+        }
+      });
+
+      function gameEnd() {
+        message.innerHTML = `You solved the combo in ${score} guesses`;
+        let gamePlay = false;
+
+        button.innerHTML = 'Restart Game';
+      }
+
+      function maker() {
+        for (let x = 0; x < 4; x++) {
+          let el = document.createElement('input');
+          el.classList.add('input-size');
+          el.setAttribute('type', 'number');
+          el.max = 9;
+          el.min = 0;
+          el.size = 1;
+          el.order = x;
+          // el.value = 0;
+          // el.value = Math.floor(Math.random() * 10);
+          el.correct = Math.floor(Math.random() * 10);
+          el.value = el.correct;
+          console.log(el.correct);
+          gameArea.appendChild(el);
+        }
+      }
+    </script> -->
+  </body>
+</html>
