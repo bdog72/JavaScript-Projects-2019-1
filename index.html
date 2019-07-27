@@ -6,30 +6,60 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>JavaScript Projects</title>
     <style>
+      h1 {
+        text-align: center;
+      }
+
+      .wrapper {
+        max-width: 1000px;
+        margin: auto;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        justify-items: center;
+      }
+
       a {
-        text-decoration: none;
         display: block;
+      }
+
+      @media (min-width: 768px) {
+        h1 {
+          font-size: 50px;
+        }
+        a {
+          font-size: 40px;
+        }
       }
     </style>
   </head>
   <body>
     <h1>JavaScript Projects</h1>
-    <a href="./html/01-tip-calculator.html">01 -- Tip Calculator</a>
-    <a href="./html/02-welcome-message.html">02 -- Welcome Message</a>
-    <a href="./html/03-time-changing-message.html">03 -- Time Changing</a>
-    <a href="./html/04-coin-toss.html">04 -- Coin Toss</a>
-    <a href="./html/05-rock-paper-scissors.html">05 -- Rock Paper Scissors</a>
-    <a href="./html/06-dice-game.html">06 -- Dice Game</a>
-    <a href="./html/07-audio-sounds-.html">07 -- Audio Sounds</a>
-    <a href="./html/08-typing-test.html">08 -- Typing Test</a>
-    <a href="./html/09-functionator.html">09 -- Functionator</a>
-    <a href="./html/10-magic-eightball.html">10 -- Magic Eight Ball</a>
-    <a href="./html/11-combination-guesser.html">11 -- Combination Guesser</a>
-    <a href="./html/12-word-scramble.html">12 -- Word Scramble</a>
-    <a href="./html/13-countdown-timer.html">13 -- Countdown Timer</a>
-    <a href="./html/14-pattern-matching.html">14 -- Pattern Matching Game</a>
-    <a href="./html/15-click-popper-game.html">15 -- Click Popper Game</a>
-    <a href="./html/16-hi-lo-card-game.html">16 -- Hi-Lo Card Game</a>
+    <!-- prettier-ignore -->
+    <div class="wrapper">
+      <div>
+        <a href="./html/01-tip-calculator.html">01 -- Tip Calculator</a>
+        <a href="./html/02-welcome-message.html">02 -- Welcome Message</a>
+        <a href="./html/03-time-changing-message.html">03 -- Time Changing</a>
+        <a href="./html/04-coin-toss.html">04 -- Coin Toss</a>
+        <a href="./html/05-rock-paper-scissors.html">05 -- Rock Paper Scissors</a>
+        <a href="./html/06-dice-game.html">06 -- Dice Game</a>
+        <a href="./html/07-audio-sounds-.html">07 -- Audio Sounds</a>
+        <a href="./html/08-typing-test.html">08 -- Typing Test</a>
+        <a href="./html/09-functionator.html">09 -- Functionator</a>
+        <a href="./html/10-magic-eightball.html">10 -- Magic Eight Ball</a>
+      </div>
+      <div>
+        <a href="./html/11-combination-guesser.html">11 -- Combination Guesser</a>
+        <a href="./html/12-word-scramble.html">12 -- Word Scramble</a>
+        <a href="./html/13-countdown-timer.html">13 -- Countdown Timer</a>
+        <a href="./html/14-pattern-matching.html">14 -- Pattern Matching Game</a>
+        <a href="./html/15-click-popper-game.html">15 -- Click Popper Game</a>
+        <a href="./html/16-hi-lo-card-game.html">16 -- Hi-Lo Card Game</a>
+        <a href="./html/17-click-reaction-game.html">17 -- Click-Reaction-Game</a>
+        <a href="./html/18-hidden-word-game.html">18 -- Hidden-Word-Game</a>
+        <a href="./html/19-car-driving-game.html">19 -- Car-Driving-Game</a>
+      </div>
+    </div>
     <script src="main.js"></script>
   </body>
 </html>
