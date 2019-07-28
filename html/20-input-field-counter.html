@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Input Field Counter</title>
+    <style>
+      textarea {
+        width: 400px;
+        height: 50px;
+      }
+
+      .red {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <textarea class="txtLimits"></textarea>
+      <div class="output"></div>
+    </div>
+    <script>
+      const output = document.querySelector('.output');
+      const txt = document.querySelector('textarea');
+
+      const maxLength = 20;
+      const warnLength = 7;
+
+      const textCounter = e => {
+        let count = txt.value.length;
+        if (count > maxLength) {
+          txt.value = txt.value.substring(0, maxLength);
+        }
+        if (count > warnLength) {
+          output.classList.add('red');
+        } else {
+          output.classList.remove('red');
+        }
+        output.innerHTML = `${maxLength - count} characters left`;
+      };
+
+      ['change', 'keyup', 'keydown'].forEach(e => {
+        txt.addEventListener(e, textCounter);
+      });
+    </script>
+  </body>
+</html>
