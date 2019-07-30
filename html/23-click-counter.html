@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Click Counter</title>
+    <style></style>
+  </head>
+  <body>
+    <script>
+      let counter = 0;
+      document.addEventListener('DOMContentLoaded', function(e) {
+        const body = document.querySelector('body');
+        let output = document.createElement('div');
+
+        output.innerHTML = `Click The Button`;
+        output.style.fontSize = '2em';
+        output.style.padding = '5px';
+        output.style.margin = '15px';
+        output.style.fontFamily = 'Verdana';
+        output.setAttribute('class', 'message');
+        body.appendChild(output);
+
+        let btn = document.createElement('button');
+        btn.innerHTML = 'Click Me';
+        btn.style.border = '1px solid #ddd';
+        btn.style.padding = '25px';
+        btn.style.width = '250px';
+        btn.style.fontSize = '2em';
+        btn.style.textAlign = 'center';
+        btn.style.background = 'red';
+        btn.style.color = '#fff';
+
+        btn.addEventListener('click', function() {
+          counter++;
+          let mes = `You clicked this <b>${counter}</b> times`;
+          document.querySelector('.message').innerHTML = mes;
+        });
+        body.appendChild(btn);
+      });
+    </script>
+  </body>
+</html>
