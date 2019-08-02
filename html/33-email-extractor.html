@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Email Extractor</title>
+    <style>
+      /* body {
+        margin: 0;
+        padding: 0;
+      } */
+      h1 {
+        /* margin: 0; */
+        /* margin-top: 10px; */
+        /* padding: 10px; */
+        /* border: 1px solid black; */
+      }
+      textarea {
+        width: 75%;
+      }
+      button {
+        display: block;
+        margin: 10px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Paste Text:</h1>
+    <textarea name="txtarea" cols="40" rows="6">
+Lorem ipsum dolor, sit amet consectetur adipisicing elit. Debitis, ut? test@test.com Lorem ipsum dolor sit amet consectetur adipisicing elit. At, quia? test1@test.com Lorem ipsum dolor sit amet. test-2@test.com</textarea
+    >
+    <button type="button">Get Emails</button>
+    <br />
+    <span class="counter"></span>
+    <h1>Emails In Text:</h1>
+    <textarea name="output" cols="40" rows="6"></textarea>
+
+    <script>
+      const rawTxt = document.querySelector('textarea[name=txtarea]');
+      const finTxt = document.querySelector('textarea[name=output]');
+      const btn = document.querySelector('button');
+
+      const counter = document.querySelector('.counter');
+
+      btn.addEventListener('click', function() {
+        let temp = rawTxt.value;
+        let expression = /([A-Za-z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gi;
+        let emailData = temp.match(expression);
+        let holder = [];
+        for (let x = 0; x < emailData.length; x++) {
+          if (holder.indexOf(emailData[x]) == -1) {
+            holder.push(emailData[x]);
+          }
+        }
+        let tempHolder = holder.join('\n');
+        counter.innerHTML = `Emails found ${holder.length}`;
+        finTxt.innerHTML = tempHolder;
+      });
+    </script>
+  </body>
+</html>
