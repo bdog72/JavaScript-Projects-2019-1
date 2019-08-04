@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Placeholder Image</title>
+  </head>
+  <body>
+    <select name="" id="">
+      <option value="150x50">Small</option>
+      <option value="350x150">Medium</option>
+      <option value="650x350">Large</option> </select
+    ><br />
+    Text On Image:
+    <input type="text" />
+    <br />
+    Color of Background <input type="color" id="bck" value="#dddddd" />
+    <br />
+    Color of Text:
+    <input type="color" id="txt" value="#ff0000" />
+    <br />
+    <img src="" alt="" />
+    <br />
+    <textarea name="" id="" cols="50" rows="3"></textarea>
+    <script>
+      const sel = document.querySelector('select');
+      const inpAll = document.querySelectorAll('input');
+      const myImage = document.querySelector('img');
+      const txtArea = document.querySelector('textarea');
+
+      function clean(str) {
+        return str.replace('#', '');
+      }
+
+      function spacers(str) {
+        return str.split(' ').join('+');
+      }
+
+      const build = e => {
+        let i = {};
+        i.size = sel.value;
+        i.text = spacers(inpAll[0].value);
+        i.bgColor = clean(inpAll[1].value);
+        i.textColor = clean(inpAll[2].value);
+        i.path = `http://via.placeholder.com/${i.size}/${i.bgColor}/${
+          i.textColor
+        }?text=${i.text}`;
+        myImage.src = i.path;
+        txtArea.value = i.path;
+        txtArea.select();
+        txtArea.focus();
+        document.execCommand('copy');
+        console.log(i);
+      };
+
+      inpAll.forEach(item => {
+        item.addEventListener('change', build);
+      });
+
+      sel.addEventListener('change', build);
+    </script>
+  </body>
+</html>
