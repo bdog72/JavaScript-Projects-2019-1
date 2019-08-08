@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Coin Toss</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <style>
+      .btn-dark {
+        min-width: 100px;
+        border-radius: 10px;
+      }
+      .btn-dark:hover {
+        color: black;
+        background: white;
+        border: 5px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container mt-4">
+      <div class="message"></div>
+      <button class="btn btn-dark mr-2" type="button">Heads</button>
+      <button class="btn btn-dark" type="button">Tails</button>
+    </div>
+    <script>
+      const coinArray = ['Heads', 'Tails'];
+
+      let score = [0, 0];
+
+      const message = document.querySelector('.message');
+      const buttons = document.querySelectorAll('button');
+
+      for (let x = 0; x < buttons.length; x++) {
+        buttons[x].addEventListener('click', tossCoin);
+      }
+
+      function tossCoin(e) {
+        let playerGuess = e.target.innerText;
+        let computerToss = Math.floor(Math.random() * 2);
+        let computerGuess = coinArray[computerToss];
+        let output;
+        message.innerHTML = `Computer Selected ${computerGuess}<br>`;
+        if (playerGuess === computerGuess) {
+          output = `Player Wins`;
+          score[0]++;
+        } else {
+          output = `Computer Wins`;
+          score[1]++;
+        }
+        message.innerHTML += `${output} <br>Player ${score[0]} <br> Computer ${
+          score[1]
+        }`;
+      }
+    </script>
+  </body>
+</html>

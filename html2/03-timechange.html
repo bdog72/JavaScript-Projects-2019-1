@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Time Change Message</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0-12/css/all.css"
+      integrity="sha256-qQHUQX+gGGYfpC7Zdni08sr+h0ymXr0avmIASucY4FM="
+      crossorigin="anonymous"
+    />
+
+    <style>
+      /* .output {
+        height: 100px;
+        width: 100%;
+        color: white;
+        border: 1px solid black;
+        text-align: center;
+      } */
+    </style>
+  </head>
+  <body class="container mt-4">
+    <div class="output"></div>
+    <button type="button">Message</button>
+    <script>
+      const button = document.querySelector('button');
+      const output = document.querySelector('.output');
+
+      output.setAttribute(
+        'style',
+        'width: 100%; height: 100px;color:white; text-align:center'
+      );
+
+      button.addEventListener('click', showOutput);
+
+      function showOutput() {
+        const date = new Date();
+        let cur = date.getHours();
+        // cur = 13;
+        let message;
+        if (cur > 17) {
+          message = 'Its Evening';
+          output.style.backgroundColor = 'black';
+        } else if (cur > 12) {
+          message = 'Its Afternoon';
+          output.style.backgroundColor = 'blue';
+        } else if (cur > 0) {
+          message = 'Its Morning';
+          output.style.backgroundColor = 'orange';
+        }
+        console.log(cur);
+        output.innerHTML = `
+          <h1>${message}</h1>
+        `;
+      }
+    </script>
+  </body>
+</html>
