@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Rock Paper Scissors</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <style>
+      button {
+        width: 100px;
+      }
+      .bozo h2,
+      p {
+        display: inline;
+      }
+      .bozo h2,
+      p {
+        /* display: inline; */
+        /* color: red; */
+      }
+      .bozo p {
+        margin-left: 5px;
+        /* height: 100%;
+        vertical-align: middle; */
+        /* display: flex;
+        align-items: center; */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container mt-4">
+      <div class="jumbotron">
+        <div class="score"></div>
+        <div class="message"></div>
+        <div class="d-flex justify-content-around">
+          <button class="btn btn-dark" type="button">Rock</button>
+          <button class="btn btn-dark" type="button">Paper</button>
+          <button class="btn btn-dark" type="button">Scissors</button>
+        </div>
+      </div>
+    </div>
+    <script>
+      const message = document.querySelector('.message');
+      const score = document.querySelector('.score');
+      const buttons = document.querySelectorAll('button');
+      let winner = [0, 0];
+      console.log(buttons);
+
+      for (let i = 0; i < buttons.length; i++) {
+        buttons[i].addEventListener('click', playGame);
+      }
+
+      function playGame(e) {
+        let playerSelection = e.target.innerText;
+        let computerSelection = Math.random();
+        if (computerSelection < 0.34) {
+          computerSelection = 'Rock';
+        } else if (computerSelection <= 0.67) {
+          computerSelection = 'Paper';
+        } else {
+          computerSelection = 'Scissors';
+        }
+        console.log(playerSelection, computerSelection);
+        let result = checkWinner(playerSelection, computerSelection);
+        console.log(result);
+        if (result == 'Player') {
+          result += ' Wins';
+          winner[0]++;
+        } else if (result == 'Computer') {
+          result += ' Wins';
+          winner[1]++;
+        } else {
+          result += ` results in a tie match`;
+        }
+
+        // score.innerHTML = `
+        // <div class='bozo'>
+        //   <h2>Player 1</h2><p>[${winner[0]}]</p>
+        //   <h2>Player 2</h2><p>[${winner[1]}]</p>
+        // </div>
+        // `;
+        score.innerHTML = `
+        <div class='bozo'>
+          <h2>Player 1</h2><p>[${winner[0]}]</p> 
+        </div>
+        <div class='bozo'>
+          <h2>Player 2</h2><p>[${winner[1]}]</p> 
+        </div>
+        `;
+
+        messanger(
+          `${playerSelection} vs ${computerSelection}<br><b>${result}</b>`
+        );
+
+        // score.innerHTML = `Player 1 [${winner[0]}] Player 2 [${winner[1]}]`;
+        // score.innerHTML =
+        //   'Player 1[' + winner[0] + '] Player 2[' + winner[1] + ']';
+      }
+
+      function messanger(mes) {
+        message.innerHTML = mes;
+      }
+
+      function checkWinner(player, computer) {
+        if (player === computer) {
+          return 'Draw';
+        }
+        if (player === 'Rock') {
+          if (computer === 'Paper') {
+            return 'Computer';
+          } else {
+            return 'Player';
+          }
+        }
+        if (player === 'Paper') {
+          if (computer === 'Scissors') {
+            return 'Computer';
+          } else {
+            return 'Player';
+          }
+        }
+        if (player === 'Scissors') {
+          if (computer === 'Rock') {
+            return 'Computer';
+          } else {
+            return 'Player';
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
