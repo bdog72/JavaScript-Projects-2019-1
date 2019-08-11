@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>FizzBuzz</title>
+  </head>
+  <body>
+    <ul id="output"></ul>
+
+    <script>
+      function fizz(num) {
+        for (let i = 0; i <= num; i++) {
+          let el = document.createElement('li');
+          el.innerText = '';
+          if (i % 3 === 0) {
+            el.innerText += 'Fizz';
+          }
+          if (i % 5 === 0) {
+            el.innerText += 'Buzz';
+          }
+          if (el.innerText === '') {
+            el.innerText = i;
+          }
+          document.getElementById('output').appendChild(el);
+        }
+      }
+
+      fizz(100);
+
+      // function fizz(num) {
+      //   for (let i = 0; i <= num; i++) {
+      //     let element = document.createElement('li');
+      //     element.innerText = '';
+      //     if (i % 3 === 0) {
+      //       element.innerText += 'Fizz';
+      //     }
+      //     if (i % 5 === 0) {
+      //       element.innerText += 'Buzz';
+      //     }
+      //     if (element.innerText === '') {
+      //       element.innerText = i;
+      //     }
+      //     document.getElementById('output').appendChild(element);
+      //   }
+      // }
+
+      // fizz(100);
+    </script>
+  </body>
+</html>
+
+<!-- for (let x = 1; x < 101; x++) {
+    if (x % 15 === 0) {
+      console.log('FizzBuzz');
+    } else if (x % 5 === 0) {
+      console.log('Buzz');
+    } else if (x % 3 === 0) {
+      console.log('Fizz');
+    } else {
+      console.log(x);
+    }
+  } -->

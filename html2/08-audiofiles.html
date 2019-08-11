@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Audio Files</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <style>
+      .animal {
+        display: inline-block;
+        width: 100px;
+        height: 50px;
+        color: black;
+        text-align: center;
+        border: 1px solid black;
+        margin: 15px;
+      }
+      .active {
+        border: 2px solid red;
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container mt-4">
+      <!-- <div class="animal cougar">Cougar</div>
+      <div class="animal dog">Dog</div>
+      <div class="animal lion">Lion</div> -->
+    </div>
+    <script>
+      const myArray = ['cougar', 'dog', 'lion'];
+      document.addEventListener('DOMContentLoaded', init);
+      function init() {
+        console.log('Page Ready');
+        myArray.forEach(function(item) {
+          console.log(item);
+          let div = document.createElement('div');
+          div.setAttribute('class', 'animal ' + item);
+          div.innerText = item.toUpperCase();
+          div.addEventListener('click', function() {
+            // let animal = this.innerHTML;
+            // let lowerAnimal = animal.toLowerCase();
+            playIt(item);
+          });
+          document.body.appendChild(div);
+        });
+      }
+      const animals = document.querySelectorAll('.animal');
+      console.log(animals);
+      for (let x = 0; x < animals.length; x++) {
+        animals[x].addEventListener('click', function() {
+          let animal = this.innerHTML;
+          let lowerAnimal = animal.toLowerCase();
+          playIt(lowerAnimal);
+        });
+      }
+
+      function playIt(name) {
+        let activeEle = document.querySelector(`.${name}`);
+        let sound1 = new Audio(`/sound/${name}.mp3`);
+        sound1.play();
+        activeEle.classList.add('active');
+        setTimeout(function() {
+          activeEle.classList.remove('active');
+        }, 1500);
+      }
+    </script>
+  </body>
+</html>
+<!-- function addStyle(name) {
+            console.log(name);
+            let activeEle = document.querySelector(`.${name}`);
+            // let activeEle = document.querySelector('.' + name);
+            activeEle.classList.add('active');
+            setTimeout(function() {
+              activeEle.classList.remove('active');
+            }, 1500);
+          }
+    
+    
+          function makeSound(name) {
+            console.log(name);
+            switch (name) {
+              case 'cougar':
+                let sound1 = new Audio('/sound/cougar.mp3');
+                sound1.play();
+                break;
+              case 'dog':
+                let sound2 = new Audio('/sound/dog.mp3');
+                sound2.play();
+                break;
+              case 'lion':
+                let sound3 = new Audio('/sound/lion.mp3');
+                sound3.play();
+                break;
+            }
+          } -->
