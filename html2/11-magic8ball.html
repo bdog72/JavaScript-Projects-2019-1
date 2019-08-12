@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Magic 8 Ball</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class=" mt-4 container">
+      <h1 class="text-center">Magic 🎱 Ball</h1>
+      <div class="input-group">
+        <input
+          class="form-control"
+          type="text"
+          placeholder="Ask Your Question"
+        />
+        <div class="input-group-append">
+          <button class="btn btn-dark" type="button">Ask</button>
+        </div>
+      </div>
+      <div class="message my-4 py-2"></div>
+      <!-- <input type="text" placeholder="Ask Your Qusetion" />
+      <button class="btn btn-dark" type="button">Ask</button> -->
+    </div>
+    <script>
+      const answerArray = [
+        'It will work',
+        'Maybe or Maybe Not',
+        'Doubt It',
+        'Heck yeah Bozo',
+        'Highly Likely'
+      ];
+
+      const message = document.querySelector('.message');
+      const question = document.querySelector('.form-control');
+      const button = document.querySelector('.btn,.btn-dark');
+
+      button.addEventListener('click', function() {
+        console.log(question.value);
+        let res = Math.floor(Math.random() * answerArray.length);
+        console.log(answerArray[res]);
+        let answer = answerArray[res];
+        message.innerHTML = `${question.value}? <br> ${answer}`;
+        question.value = '';
+        setTimeout(() => {
+          message.innerHTML = '';
+        }, 10000);
+      });
+
+      // message.innerHTML = 'Hello World';
+      // message.style.border = '1px solid black';
+    </script>
+  </body>
+</html>
